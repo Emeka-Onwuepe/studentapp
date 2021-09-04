@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Event_proto(models.Model):
+class Single_Event(models.Model):
     name = models.CharField("name",max_length = 150)
     venue = models.CharField("venue",max_length = 150)
     organiser_phone_number = models.CharField("organiser_phone_number",max_length = 150,blank=True,null=True)
@@ -17,13 +17,13 @@ class Event_proto(models.Model):
     class Meta:
         db_table = ''
         managed = True
-        verbose_name = 'Event_proto'
-        verbose_name_plural = 'Event_protos'
+        verbose_name = 'Single_Event'
+        verbose_name_plural = 'Single_Events'
 
 class Event(models.Model):
     name = models.CharField("name",max_length = 150)
     description = models.CharField("description", max_length = 255, null=True, blank=True)
-    event_list = models.ManyToManyField(Event_proto,related_name="event_lists")
+    event_list = models.ManyToManyField(Single_Event,related_name="event_lists")
 
     def __str__(self):
         self.name

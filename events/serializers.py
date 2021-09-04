@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Event_proto, Event
+from .models import Single_Event, Event
 
 
 class Event_protoSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Event_proto
+        model=Single_Event
         fields= "__all__"
 
 class EventSerializer(serializers.ModelSerializer):

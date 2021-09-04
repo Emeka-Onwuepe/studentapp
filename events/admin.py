@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Event_proto, Event
+from .models import Single_Event, Event
 
 # Register your models here.
 
-admin.site.register(Event_proto)
+admin.site.register(Single_Event)
 admin.site.register(Event)
