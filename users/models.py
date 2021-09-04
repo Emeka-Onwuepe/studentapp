@@ -5,6 +5,7 @@ from faculties.models import Faculty
 from associations.models import Association
 from departments.models import Department
 from sets.models import Set
+from events.models import Grouped_Events, Single_Event
 
 
 
@@ -46,6 +47,8 @@ class User(AbstractBaseUser,PermissionsMixin):
     is_set_admin = models.BooleanField(default=False)
     associations = models.ManyToManyField(Association,related_name="user_associations")
     association_admin = models.ManyToManyField(Association,related_name="association_admin")
+    grouped_events = models.ManyToManyField(Grouped_Events,related_name="user_grouped_events")
+    single_events = models.ManyToManyField(Single_Event,related_name="user_single_events")
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     staff=models.BooleanField(default=False)

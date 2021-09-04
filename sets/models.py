@@ -2,7 +2,7 @@ from django.db import models
 from departments.models import Department
 from lectures.models import Lecture
 from examinations.models import Examination
-from events.models import Single_Event
+from events.models import Single_Event, Grouped_Events
 
 
 # Create your models here.
@@ -24,7 +24,8 @@ class Level(models.Model):
 class Set(models.Model):
     year = models.CharField("year", max_length = 150)
     department = models.ForeignKey(Department, on_delete=models.CASCADE,related_name="department")
-    events = models.ManyToManyField(Single_Event,related_name="single_event")
+    single_events = models.ManyToManyField(Single_Event,related_name="single_event")
+    grouped_events = models.ManyToManyField(Grouped_Events,related_name="grouped_events")
     lectures = models.ManyToManyField(Lecture,related_name="lecture")
     exams = models.ManyToManyField(Examination,related_name="examination")
     

@@ -1,12 +1,13 @@
 from django.db import models
-from events.models import Grouped_Events
+from events.models import Grouped_Events,Single_Event
 
 # Create your models here.
 
 class Institution(models.Model):
     name = models.CharField("name", max_length = 150)
     location = models.CharField("name",max_length = 150)
-    events = models.ManyToManyField(Grouped_Events,related_name="institution_events")
+    grouped_events = models.ManyToManyField(Grouped_Events,related_name="institution_events")
+    single_events = models.ManyToManyField(Single_Event, related_name="institution_single_events")
     
     def __str__(self):
         return self.name

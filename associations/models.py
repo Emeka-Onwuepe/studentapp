@@ -1,5 +1,5 @@
 from django.db import models
-from events.models import Grouped_Events
+from events.models import Grouped_Events, Single_Event
 
 # Create your models here.
 
@@ -30,7 +30,8 @@ class Association(models.Model):
     location  = models.CharField("location", max_length = 256)
     email = models.EmailField(blank=True, null=True)
     phone_number = models.CharField("phone_number", max_length = 255)
-    events  = models.ManyToManyField(Grouped_Events, related_name="events")
+    grouped_events  = models.ManyToManyField(Grouped_Events, related_name="events")
+    single_events = models.ManyToManyField(Single_Event, related_name="single_events")
     class Meta:
         """Meta definition for Association."""
 
