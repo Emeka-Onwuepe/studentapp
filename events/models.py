@@ -20,7 +20,7 @@ class Single_Event(models.Model):
         verbose_name = 'Single_Event'
         verbose_name_plural = 'Single_Events'
 
-class Event(models.Model):
+class Grouped_Events(models.Model):
     name = models.CharField("name",max_length = 150)
     description = models.CharField("description", max_length = 255, null=True, blank=True)
     event_list = models.ManyToManyField(Single_Event,related_name="event_lists")
@@ -31,5 +31,5 @@ class Event(models.Model):
     class Meta:
         db_table = ''
         managed = True
-        verbose_name = 'Event'
-        verbose_name_plural = 'Events'
+        verbose_name = 'Grouped_Events'
+        verbose_name_plural = 'Grouped_Events'

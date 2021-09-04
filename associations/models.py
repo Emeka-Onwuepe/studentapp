@@ -1,5 +1,5 @@
 from django.db import models
-from events.models import Event
+from events.models import Grouped_Events
 
 # Create your models here.
 
@@ -30,16 +30,7 @@ class Association(models.Model):
     location  = models.CharField("location", max_length = 256)
     email = models.EmailField(blank=True, null=True)
     phone_number = models.CharField("phone_number", max_length = 255)
-    events  = models.ManyToManyField(Event, related_name="events")
-    
-    
-    
-    
-    
-    
-
-
-
+    events  = models.ManyToManyField(Grouped_Events, related_name="events")
     class Meta:
         """Meta definition for Association."""
 
@@ -48,7 +39,7 @@ class Association(models.Model):
 
     def __str__(self):
         """Unicode representation of Association."""
-        pass
+        return self.name
 
 
 
