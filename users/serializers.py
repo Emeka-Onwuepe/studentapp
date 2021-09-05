@@ -3,13 +3,13 @@ from django.contrib.auth import get_user_model
 User=get_user_model()
 from django.contrib.auth import authenticate
 
-class GetUserSerializer(serializers.ModelSerializer):
+class Get_User_Serializer(serializers.ModelSerializer):
     class Meta:
         model = User
         exclude=["password","last_login","is_active","is_admin","staff",
-                    "is_superuser","owner","groups","user_permissions"]
+                    "is_superuser","groups","user_permissions"]
 
-class UserSerializer(serializers.ModelSerializer):
+class User_Serializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "first_name","last_name", "email" ,"institution","faculty",
@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user         
 
 
-class LoginSerializer(serializers.Serializer):
+class Login_Serializer(serializers.Serializer):
     email= serializers.EmailField()
     password= serializers.CharField()
     

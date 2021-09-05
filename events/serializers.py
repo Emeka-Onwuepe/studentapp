@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from .models import Single_Event, Event
+from .models import Single_Event, Grouped_Events
 
 
-class Event_protoSerializer(serializers.ModelSerializer):
+class Single_Event_Serializer(serializers.ModelSerializer):
     class Meta:
         model=Single_Event
         fields= "__all__"
 
-class EventSerializer(serializers.ModelSerializer):
+class Grouped_Events_Serializer(serializers.ModelSerializer):
     class Meta:
-        model=Event
+        model=Grouped_Events
         fields= "__all__"
