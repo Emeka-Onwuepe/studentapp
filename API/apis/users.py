@@ -17,3 +17,14 @@ class LoginUser(generics.GenericAPIView):
         #         content={"Access denied":"Access Denied, please request for access from the appropriate body"}
         #         return Response(content,status=status.HTTP_403_FORBIDDEN)
         return Response({"user": returnedUser.data, "token": token})
+
+class RegisterUser(generics.GenericAPIView):
+    serializer_class = User_Serializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        _,token=AuthToken.objects.create(user)
+        returnedUser=Get_User_Serializer(user)
+        return Response({"user":returnedUser.data,"token":token})
