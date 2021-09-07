@@ -7,8 +7,8 @@ from events.models import Grouped_Events, Single_Event
 class Department(models.Model):
     name = models.CharField("name", max_length = 150)
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE,related_name="faculty")
-    grouped_events = models.ManyToManyField(Grouped_Events,related_name="department_events")
-    single_events = models.ManyToManyField(Single_Event, related_name="department_single_events")
+    grouped_events = models.ManyToManyField(Grouped_Events,related_name="department_events",blank=True)
+    single_events = models.ManyToManyField(Single_Event, related_name="department_single_events",blank=True)
     
     def __str__(self):
         return self.name

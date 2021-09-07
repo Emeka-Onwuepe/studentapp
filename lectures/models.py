@@ -52,9 +52,9 @@ class Lecture_day_and_venue(models.Model):
 class Lecture(models.Model):
     course_code = models.IntegerField()
     course_title  = models.CharField("course_title", max_length = 150)
-    days_and_venues = models.ManyToManyField(Lecture_day_and_venue,related_name="lecture_days_and_venues")
+    days_and_venues = models.ManyToManyField(Lecture_day_and_venue,related_name="lecture_days_and_venues",blank=True)
     Lecturers_in_charge  = models.CharField("lecturers_in_charge", max_length = 250, blank=True, null=True)
-    Recommended_text = models.ManyToManyField(Recommended_text,related_name="recommended_text")
+    Recommended_text = models.ManyToManyField(Recommended_text,related_name="recommended_text",blank=True)
     
     def __str__(self):
         return f"{self.code} : {self.title}"

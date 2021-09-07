@@ -24,13 +24,13 @@ class Level(models.Model):
 class Set(models.Model):
     year = models.CharField("year", max_length = 150)
     department = models.ForeignKey(Department, on_delete=models.CASCADE,related_name="department")
-    single_events = models.ManyToManyField(Single_Event,related_name="single_event")
-    grouped_events = models.ManyToManyField(Grouped_Events,related_name="grouped_events")
-    lectures = models.ManyToManyField(Lecture,related_name="lecture")
-    exams = models.ManyToManyField(Examination,related_name="examination")
+    single_events = models.ManyToManyField(Single_Event,related_name="single_event",blank=True)
+    grouped_events = models.ManyToManyField(Grouped_Events,related_name="grouped_events",blank=True)
+    lectures = models.ManyToManyField(Lecture,related_name="lecture",blank=True)
+    exams = models.ManyToManyField(Examination,related_name="examination",blank=True)
     
     def __str__(self):
-        return self.name
+        return self.year
 
     class Meta:
         db_table = ''
